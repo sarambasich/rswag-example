@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+  rswag-example:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/workspace/rswag-example/src
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
