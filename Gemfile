@@ -13,6 +13,8 @@ group :development, :test do
 end
 
 group :development do
-	
+	# NOTE: debase seems to have issues with Ruby 3.2: https://github.com/ruby-debug/debase/issues/95#issuecomment-1260555341
+	# gem 'debase', '0.2.5.beta2', require: false
+	# gem 'ruby-debug-ide'
 end
 

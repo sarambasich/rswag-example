@@ -11,7 +11,7 @@ class PlantsController < ApplicationController
 
 	def create
 		p = Plant.create(plant_params)
-		render json: p.to_json
+		render json: p.to_json, status: :created
 	end
 
 	def update
@@ -23,7 +23,7 @@ class PlantsController < ApplicationController
 	def destroy
 		p = Plant.find(params[:id])
 		p.destroy!
-		head(:no_content)
+		head :no_content
 	end
 
 	private

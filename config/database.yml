@@ -84,4 +84,4 @@ production:
   <<: *default
   database: rswag_example_production
   username: rswag_example
-  password: <%= ENV["SRC_DATABASE_PASSWORD"] %>
+  password: <%= ENV["RSWAG_EXAMPLE_DATABASE_PASSWORD"] %>
