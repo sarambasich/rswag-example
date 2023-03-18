@@ -9,7 +9,7 @@ gem "puma", "~> 5.0"
 # gem 'rswag', '~> 2.8.0'
 
 group :development, :test do
-	
+	gem 'rspec-rails', '~> 6.0.1'
 end
 
 group :development do
