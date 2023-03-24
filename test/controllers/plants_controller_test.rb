@@ -83,7 +83,7 @@ class PlantsControllerTest < ActionDispatch::IntegrationTest
 	# Subroutine to check if the hash has expected timestamps
 	# @param data [Hash] The hash to check
 	def assert_has_timestamps(data)
-		assert_not_empty(data[:created_at])
-		assert_not_empty(data[:updated_at])
+		assert_not_empty(data[:created_at].to_datetime)
+		assert_not_empty(data[:updated_at].to_datetime)
 	end
 end
