@@ -1,8 +1,8 @@
-require "test_helper"
+require 'test_helper'
 
-# These test cases use fixtures for pre-defined model instances
+# NOTE: These test cases rely on fixtures for pre-defined model instances
 class PlantsControllerTest < ActionDispatch::IntegrationTest
-	test "should get index" do
+	test 'should get index' do
 		get plants_url
 		assert_response :success
 
@@ -13,17 +13,17 @@ class PlantsControllerTest < ActionDispatch::IntegrationTest
 		first_plant = data.first.symbolize_keys
 		assert(first_plant[:id].is_a?(Integer))
 		assert_equal("Stefan's Plant", first_plant[:name])
-		assert_equal("Peace Lily", first_plant[:species])
+		assert_equal('Peace Lily', first_plant[:species])
 		assert_has_timestamps(first_plant)
 
 		second_plant = data.last.symbolize_keys
 		assert(second_plant[:id].is_a?(Integer))
-		assert_equal("Other Plant", second_plant[:name])
-		assert_equal("Parlor Palm", second_plant[:species])
+		assert_equal('Other Plant', second_plant[:name])
+		assert_equal('Parlor Palm', second_plant[:species])
 		assert_has_timestamps(second_plant)
 	end
 
-	test "should get show" do
+	test 'should get show' do
 		plant = Plant.first!
 		get plant_url(plant)
 		assert_response :success
@@ -34,7 +34,7 @@ class PlantsControllerTest < ActionDispatch::IntegrationTest
 		assert_has_timestamps(data)
 	end
 
-	test "should POST create" do
+	test 'should POST create' do
 		post plants_url, params: {
 			plant: {
 				name: 'New plant',
@@ -49,7 +49,7 @@ class PlantsControllerTest < ActionDispatch::IntegrationTest
 		assert_has_timestamps(data)
 	end
 
-	test "should PUT update" do
+	test 'should PUT update' do
 		plant = Plant.first!
 		put plant_url(plant), params: {
 			plant: {
@@ -70,7 +70,7 @@ class PlantsControllerTest < ActionDispatch::IntegrationTest
 		assert_equal('Dracaena', plant.species)
 	end
 
-	test "should DELETE destroy" do
+	test 'should DELETE destroy' do
 		p = Plant.first!
 		delete plant_url(p)
 		assert_response :no_content
@@ -83,7 +83,7 @@ class PlantsControllerTest < ActionDispatch::IntegrationTest
 	# Subroutine to check if the hash has expected timestamps
 	# @param data [Hash] The hash to check
 	def assert_has_timestamps(data)
-		assert_not_empty(data[:created_at])
-		assert_not_empty(data[:updated_at])
+		assert_not_nil(data[:created_at].to_datetime)
+		assert_not_nil(data[:updated_at].to_datetime)
 	end
 end
