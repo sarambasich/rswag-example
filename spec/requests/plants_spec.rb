@@ -135,7 +135,7 @@ RSpec.describe 'plants requests - happy paths', type: :request do
 		let(:plant) { Plant.first }
 
 		it 'deletes the plant from the database' do
-			expect(Plant.find(plant.id)).to be_nil
+			expect { Plant.find(plant.id) }.to raise_error(ActiveRecord::RecordNotFound)
 		end
 
 		it 'returns a valid response' do
