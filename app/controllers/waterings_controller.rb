@@ -18,7 +18,7 @@ class WateringsController < ApplicationController
 		@watering = Watering.new(watering_params)
 
 		if @watering.save
-			render json: @watering, status: :created, location: @watering
+			render json: @watering, status: :created
 		else
 			render json: @watering.errors, status: :unprocessable_entity
 		end
@@ -41,13 +41,12 @@ class WateringsController < ApplicationController
 	private
 	# Use callbacks to share common setup or constraints between actions.
 	def set_watering
-		@watering = Watering.find(params[:id])
+		@watering = Watering.find_by(plant_id: params[:plant_id], id: params[:id])
 	end
 
 	# Only allow a list of trusted parameters through.
 	def watering_params
-		params.require(:plant_id)
-					.require(:watering)
+		params.require(:watering)
 					.permit(:timestamp, :quantity, :method, :plant_id)
 	end
 end
