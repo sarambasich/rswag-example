@@ -1,15 +1,15 @@
 source "https://rubygems.org"
 
-ruby '3.2.1'
+ruby File.read ".ruby-version".strip
 
-gem "rails", "~> 7.0.4", ">= 7.0.4.3"
+gem "rails", "~> 7.0.8"
 gem "pg", "~> 1.1"
-gem "puma", "~> 5.0"
+gem "puma"
 
 # gem 'rswag', '~> 2.8.0'
 
 group :development, :test do
-	gem 'rspec-rails', '~> 6.0.1'
+	gem 'rspec-rails'
 end
 
 group :development do
